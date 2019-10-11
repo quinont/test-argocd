@@ -14,7 +14,7 @@ spec:
         app: test
     spec:
       containers:
-      - image: quinont/test-argocd:2.0
+      - image: quinont/test-argocd:3.0
         name: test
         ports:
         - containerPort: 80
