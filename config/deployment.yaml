@@ -14,7 +14,7 @@ spec:
         app: test
     spec:
       containers:
-      - image: eltincho89/argo-poc-x11:3.0
+      - image: eltincho89/argo-poc-x11:4.0
         name: test
         ports:
         - containerPort: 80
