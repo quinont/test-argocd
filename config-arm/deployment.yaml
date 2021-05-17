@@ -16,7 +16,7 @@ spec:
       nodeSelector:
         beta.kubernetes.io/arch: arm64
       containers:
-      - image: quinont/test-argocd:3.0arm
+      - image: containous/whoami:v1.5.0
         name: test
         ports:
         - containerPort: 80
