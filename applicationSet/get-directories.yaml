@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: cluster-git
+spec:
+  generators:
+  - matrix:
+      generators:
+        - git:
+            repoURL: https://github.com/quinont/test-argocd.git
+            revision: master
+            directories:
+            - path: apps/*
+        - clusters: {}
+  template:
+    metadata:
+      name: '{{.path.basename}}-{{.nameNormalized}}'
+    spec:
+      project: '{{.metadata.labels.environment}}'
+      source:
+        repoURL: https://github.com/quinont/test-argocd.git
+        targetRevision: master
+        path: '{{.path.path}}'
+      destination:
+        server: '{{.server}}'
+        namespace: '{{.path.basename}}'
+      syncPolicy:
+        syncOptions:
+        - CreateNamespace=true
