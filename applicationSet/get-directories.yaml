@@ -3,6 +3,8 @@ kind: ApplicationSet
 metadata:
   name: cluster-git
 spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
   generators:
   - matrix:
       generators:
@@ -14,7 +16,7 @@ spec:
         - clusters: {}
   template:
     metadata:
-      name: '{{.path.basename}}-{{.cluster}}'
+      name: '{{.path.basenameNormalized}}-{{.nameNormalized}}'
     spec:
       project: 'default'
       source:
@@ -23,7 +25,11 @@ spec:
         path: '{{.path.path}}'
       destination:
         server: '{{.server}}'
-        namespace: '{{.path.basename}}'
+        namespace: '{{.path.basenameNormalized}}'
       syncPolicy:
+        automated:
+          prune: true
+          allowEmpty: true
+          selfHeal: true
         syncOptions:
         - CreateNamespace=true
