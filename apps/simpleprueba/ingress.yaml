@@ -4,7 +4,7 @@ metadata:
   name: myingress
 spec:
   rules:
-  - host: "test.local.casa.com"
+  - host: "test.server.casa.local"
     http:
       paths:
       - path: /
