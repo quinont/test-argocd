@@ -1,0 +1,24 @@
+
+replicaCount: 1
+
+image:
+  repository: containous/whoami
+  pullPolicy: IfNotPresent
+  tag: "v1.4.0"
+
+nameOverride: ""
+fullnameOverride: ""
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  hosts:
+    - host: chart-example.local
+      paths:
+      - path: /
+        backend:
+          serviceName: test
+          servicePort: 80
