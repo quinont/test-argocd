@@ -12,7 +12,7 @@ spec:
             repoURL: https://github.com/quinont/test-argocd.git
             revision: master
             directories:
-            - path: apps/*
+            - path: apps/all-clusters/*
         - clusters: {}
   template:
     metadata:
@@ -22,7 +22,11 @@ spec:
       source:
         repoURL: https://github.com/quinont/test-argocd.git
         targetRevision: master
-        path: '{{.path.path}}'
+        path: charts/simple
+        helm:
+          parameters:
+          - name: 'ingress.hosts[0].host'
+            value: test.server.casa.local
       destination:
         server: '{{.server}}'
         namespace: '{{.path.basenameNormalized}}'
