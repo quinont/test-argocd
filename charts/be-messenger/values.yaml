@@ -1,0 +1,24 @@
+
+replicaCount: 1
+
+image:
+  repository: quinont/messenger-backend
+  pullPolicy: IfNotPresent
+  tag: "1"
+
+nameOverride: ""
+fullnameOverride: ""
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: false
+  hosts:
+    - host: chart-example.local
+      paths:
+      - path: /
+        backend:
+          serviceName: test
+          servicePort: 80

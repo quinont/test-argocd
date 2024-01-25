@@ -1,0 +1,11 @@
+{
+    "server": "rbpi4",
+    "path": "charts/fe-messenger",
+    "values": {
+        "domain": "messenger.rbpi4.casa.local",
+        "ERROR_THRESHOLD": "0",
+        "HOST_MESSENGER": "messenger.messenger",
+        "PORT_MESSENGER": "80",
+        "PATH_MESSENGER": "/message"
+    }
+}

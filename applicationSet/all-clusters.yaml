@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: cluster-git
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+  - matrix:
+      generators:
+        - git:
+            repoURL: https://github.com/quinont/test-argocd.git
+            revision: master
+            files:
+              - path: apps/all-clusters/*/config.json
+        - clusters: {}
+  template:
+    metadata:
+      name: '{{.app-name}}-{{.nameNormalized}}'
+    spec:
+      project: 'default'
+      source:
+        repoURL: https://github.com/quinont/test-argocd.git
+        targetRevision: master
+        path: '{{ .path }}'
+      destination:
+        server: '{{ .server }}'
+        namespace: '{{ .app-name }}'
+      syncPolicy:
+        automated:
+          prune: true
+          allowEmpty: true
+          selfHeal: true
+        syncOptions:
+        - CreateNamespace=true

@@ -1,0 +1,10 @@
+{
+    "server": "in-cluster",
+    "values": {
+        "domain": "messenger.server.casa.local",
+        "ERROR_THRESHOLD": "0",
+        "HOST_MESSENGER": "messenger.messenger",
+        "PORT_MESSENGER": "80",
+        "PATH_MESSENGER": "/message"
+    }
+}

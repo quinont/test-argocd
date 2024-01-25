@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test
+  template:
+    metadata:
+      labels:
+        app: test
+    spec:
+      containers:
+      - image: quinont/messenger-frontend:1
+        name: test
+        env:
+        - name: ERROR_THRESHOLD
+          value: "0"
+        - name: HOST_MESSENGER
+          value: "messenger.messenger"
+        - name: PORT_MESSENGER
+          value: "80"
+        - name: PATH_MESSENGER
+          value: "/message"
+        ports:
+        - containerPort: 8080
+          name: app-port
