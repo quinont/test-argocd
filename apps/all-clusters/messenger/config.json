@@ -1,5 +1,5 @@
 {
-    "app-name": "messenger",
+    "appname": "messenger",
     "path": "charts/be-messenger",
     "ERROR_THRESHOLD": "0",
     "MAX_DELAY_MS": "0"
