@@ -13,7 +13,7 @@ spec:
         app: test
     spec:
       containers:
-      - image: quinont/messenger-frontend:1
+      - image: quinont/messenger-frontend:2
         name: test
         env:
         - name: ERROR_THRESHOLD
