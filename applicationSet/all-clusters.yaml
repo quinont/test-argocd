@@ -12,7 +12,7 @@ spec:
             repoURL: https://github.com/quinont/test-argocd.git
             revision: master
             files:
-              - path: apps/all-clusters/*/config.json
+              - path: apps/all-clusters/**/config.json
         - clusters: {}
   template:
     metadata:
@@ -22,10 +22,10 @@ spec:
       source:
         repoURL: https://github.com/quinont/test-argocd.git
         targetRevision: master
-        path: '{{ .path }}'
+        path: '{{ .apppath }}'
       destination:
         server: '{{ .server }}'
-        namespace: '{{ .app-name }}'
+        namespace: '{{ .appname }}'
       syncPolicy:
         automated:
           prune: true
